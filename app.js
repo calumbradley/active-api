@@ -14,8 +14,10 @@ require('dotenv').config()
 const con = mysql.createConnection({
   host: process.env.MYSQLHOST,
   user: process.env.MYSQLUSER,
-  password: process.env.MYSQLPW
+  password: process.env.MYSQLPW,
+  database: process.env.MYSQLDB
 });
+
 
 con.connect(function(err) {
   if (err) throw err;
@@ -23,7 +25,13 @@ con.connect(function(err) {
 });
 
 app.get('/exercise', (req, res) => {
-  res.send('exercise')
+  con.query('SELECT * from exercise LIMIT 1', (err, rows) => {
+    if(err) throw err;
+    console.log('The data from users table are: \n', rows);
+    con.end();
+    res.send(rows);
+
+});
 })
 
 app.get('/bodypart', (req, res) => {
