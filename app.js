@@ -12,7 +12,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 require('dotenv').config()
 
 const con = mysql.createConnection({
-  host: "active-api.ckgwmrigl9vq.us-east-1.rds.amazonaws.com",
+  host: process.env.MYSQLHOST,
   user: process.env.MYSQLUSER,
   password: process.env.MYSQLPW
 });
