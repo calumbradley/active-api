@@ -1,0 +1,19 @@
+{
+  "name": "active-api",
+  "version": "1.0.0",
+  "description": "an api for fitness exercises",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/calumbradley/active-api.git"
+  },
+  "author": "Calum Bradley",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/calumbradley/active-api/issues"
+  },
+  "homepage": "https://github.com/calumbradley/active-api#readme"
+}
