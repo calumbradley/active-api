@@ -18,6 +18,15 @@ const con = mysql.createConnection({
   database: process.env.MYSQLDB
 });
 
+let dummydata = [
+	{
+		category: NULL,
+		body_part: NULL,
+    exercise_name: NULL
+	}
+]
+
+
 
 con.connect(function(err) {
   if (err) throw err;
@@ -25,13 +34,15 @@ con.connect(function(err) {
 });
 
 app.get('/exercise', (req, res) => {
-  con.query('SELECT * from exercise LIMIT 1', (err, rows) => {
-    if(err) throw err;
-    console.log('The data from users table are: \n', rows);
-    con.end();
-    res.send(rows);
+//   con.query('SELECT * from exercise LIMIT 1', (err, rows) => {
+//     if(err) throw err;
+//     console.log('The data from users table are: \n', rows);
+//     con.end();
+//     res.send(rows);
 
-});
+// });
+
+res.send(dummydata);
 })
 
 app.get('/bodypart', (req, res) => {
