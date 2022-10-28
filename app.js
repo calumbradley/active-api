@@ -5,6 +5,10 @@ const mysql = require('mysql');
 
 const app = express();
 
+// const exercise = require("./.db/exercise");
+// const category = require("./.db/category");
+// const bodypart = require("./.db/bodypart");
+
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -18,36 +22,33 @@ const con = mysql.createConnection({
   database: process.env.MYSQLDB
 });
 
-let dummydata = [
-	{
-		category: 'fake_data',
-		body_part: 'fake_data',
-    exercise_name: 'fake_data'
-	}
-]
-
-
-
 con.connect(function(err) {
   if (err) throw err;
   console.log("Connected!");
 });
 
 app.get('/exercise', (req, res) => {
-//   con.query('SELECT * from exercise LIMIT 1', (err, rows) => {
-//     if(err) throw err;
-//     console.log('The data from users table are: \n', rows);
-//     con.end();
-//     res.send(rows);
-
-// });
-
-res.send(dummydata);
+  con.query('SELECT * from exercise;', (err, rows) => {
+    if (err) throw err;
+    // con.end();
+    res.send(rows);
+  });
 })
 
 app.get('/bodypart', (req, res) => {
-  res.send('bodypart!')
+  con.query('SELECT * from bodypart;', (err, rows) => {
+    if (err) throw err;
+    // con.end();
+    res.send(rows)
+  })
 })
 
+app.get('/category', (req, res) => {
+  con.query('SELECT * from category;', (err, rows) => {
+    if (err) throw err;
+    // con.end();
+    res.send(rows)
+  })
+})
 
 module.exports = app;
