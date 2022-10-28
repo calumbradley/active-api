@@ -20,9 +20,9 @@ const con = mysql.createConnection({
 
 let dummydata = [
 	{
-		category: NULL,
-		body_part: NULL,
-    exercise_name: NULL
+		category: 'fake_data',
+		body_part: 'fake_data',
+    exercise_name: 'fake_data'
 	}
 ]
 
